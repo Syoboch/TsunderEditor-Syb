@@ -209,7 +209,7 @@
           dokushaClassAttribute = ""
         }
         afterText[i] =
-          '<dt' + dokushaClassAttribute + '>\n' +
+          '<dt id="res_' + TEvar.resData.number[i] + '"' + dokushaClassAttribute + '>\n' +
           TEvar.resData.number[i] + ' 名前：<span class="name">' + TEvar.resData.name[i] + '</span>[' +
           TEvar.resData.mail[i] + '] 投稿日：' + TEvar.resData.time[i] + '\n' +
           "<dd>\n" + TEvar.resData.text[i];
@@ -380,7 +380,7 @@
         TEvar.resData.text[i] = TEvar.resData.text[i].replace(/ *<br> */g, "<br>");
         TEvar.resData.text[i] = TEvar.resData.text[i].replace(/<!--.*?-->| *<div.+?$| *<table.+?$/g, "");
         TEvar.resData.text[i] = TEvar.resData.text[i].replace(/<a href=".+?" target="_blank">(.+?)<\/a>/g, '<a href="$1" target="_blank">$1</a>');
-        TEvar.resData.text[i] = TEvar.resData.text[i].replace(/<a href=".+?" target="_blank">(\&gt;\&gt;[-\d]+?)<\/a>/g, "$1");
+        TEvar.resData.text[i] = TEvar.resData.text[i].replace(/<a href=".+?" target="_blank">\&gt;\&gt;([-\d]+?)<\/a>/g, '<a href="#res_$1">&gt;&gt;$1</a>');
         TEvar.resData.text[i] = TEvar.resData.text[i].replace(/<br>/g, "<br>\n");
         if (oldHTML == "old") { TEvar.resData.text[i] = TEvar.resData.text[i] + "<br>\n<br>\n"; }
         //dtを変換し格納
